@@ -5,5 +5,15 @@
 # Home page
 GET     /                           controllers.Application.index
 
+GET    /statusz                     controllers.Status.statusz
+GET    /healthz                     controllers.Status.healthz
+GET    /propertiesz                 controllers.Status.propertiesz
+
+GET    /resources/item/             controllers.Item.all
+GET    /resources/item/:id          controllers.Item.get_item(id: Int)
+POST   /resources/item/:id/update   controllers.Item.update_item(id: Int)
+POST   /resources/item/query        controllers.Item.query
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
