@@ -11,36 +11,42 @@ import models.Items
 object ItemController extends Controller {
   val itemForm = Form(
       mapping(
-          "id" -> number, 
-          "name" -> text, 
-          "description" -> text, 
-          "category" -> text, 
-          "date_acquired" -> jodaDate, 
+          "id" -> optional(number),
+          "name" -> text,
+          "description" -> text,
+          "category" -> text,
+          "date_acquired" -> jodaDate,
           "sponsoring_member" -> text)(Item.apply)(Item.unapply))
-          
+
   def query = Action {
     Ok(views.html.barebones("OK"))
-  } 
-  
-  def all = Action {
-    Ok(views.html.barebones("OK"))
   }
-  
+
+  def all = Action {
+    Ok(views.html.list_items(Items.all))
+    //Ok(views.html.barebones("OK"))
+  }
+
   def get_item(item_id : Int) = Action {
     Ok(views.html.barebones("OK"))
   }
-  
+
   def update_item(item_id : Int) = Action {
-    Ok(views.html.barebones("OK"))
+    implicit request =>
+      val user = itemForm.bindFromRequest.get
+      val item = user.copy(id = Some(item_id))
+      Items.update_item(item)
+      Redirect(routes.Application.index)
   }
-  
-  def add = Action {
-      Ok(views.html.item())
+
+  def new_item_form = Action {
+      Ok(views.html.new_item_form(itemForm))
   }
-  
-  def save = Action{implicit request =>
-    val user = itemForm.bindFromRequest.get
-    Items.create(user)
-    Redirect(routes.Application.index)
+
+  def save = Action {
+    implicit request =>
+      val item = itemForm.bindFromRequest.get
+      Items.create(item)
+      Redirect(routes.Application.index)
   }
 }

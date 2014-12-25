@@ -10,11 +10,12 @@ GET    /healthz                     controllers.StatusController.healthz
 GET    /propertiesz                 controllers.StatusController.propertiesz
 
 GET    /resources/item/             controllers.ItemController.all
+GET    /resources/item/new          controllers.ItemController.new_item_form
+POST   /resources/item/new          controllers.ItemController.save
+POST   /resources/item/query        controllers.ItemController.query
 GET    /resources/item/:id          controllers.ItemController.get_item(id: Int)
 POST   /resources/item/:id/update   controllers.ItemController.update_item(id: Int)
-POST   /resources/item/query        controllers.ItemController.query
-GET    /resources/item/new          controllers.ItemController.add
-POST   /resources/item/new          controllers.ItemController.add
+
 
 
 # Map static resources from the /public folder to the /assets URL path
