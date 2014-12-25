@@ -1,9 +1,9 @@
-@(itemForm: Form[Item])
+@(items: List[Item], itemForm: Form[Item])
 
 @import helper._
 @import models.Item
 
-@main("Add a new Item") {
+@main("Add a new Item", items) {
 
 
   <div class="row">

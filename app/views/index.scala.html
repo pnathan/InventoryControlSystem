@@ -1,14 +1,6 @@
 @(items: List[Item])
 
-@main("Attic Inventory") {
-   
-    Hello!  
-    <p>
-    We have @items.length items tracked in our inventory.
-    <p>
-    To add a new one, <a href="resources/item/new">click</a>.
-    <p>
-    To see what we have, <a href="resources/item">click</a>.
-    
+@main("Attic Inventory", items) {
 
+    Hello!
 }

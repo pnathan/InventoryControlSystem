@@ -1,14 +1,17 @@
 @(items: List[Item])
 
-@main("Items") {
+@main("Items", items) {
 
 <div class="container">
         <h1>items: @items.length </h1>
-        <table class="table table-striped">
+        <table class="table table-striped" border=1>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,6 +19,11 @@
                 <tr>
                     <td>@item.id</td>
                     <td>@item.name</td>
+                    <td>@item.category</td>
+                    <td>@item.description</td>
+                    <td> @item.id.map { id => <a href="@routes.ItemController.get_item(id)">Details</a> }
+                    </td>
+
                 </tr>
                 }
             </tbody>

@@ -24,11 +24,10 @@ object ItemController extends Controller {
 
   def all = Action {
     Ok(views.html.list_items(Items.all))
-    //Ok(views.html.barebones("OK"))
   }
 
   def get_item(item_id : Int) = Action {
-    Ok(views.html.barebones("OK"))
+    Ok(views.html.show(Items.all, Items.get_item(item_id)))
   }
 
   def update_item(item_id : Int) = Action {
@@ -40,7 +39,7 @@ object ItemController extends Controller {
   }
 
   def new_item_form = Action {
-      Ok(views.html.new_item_form(itemForm))
+      Ok(views.html.new_item_form(Items.all, itemForm))
   }
 
   def save = Action {
