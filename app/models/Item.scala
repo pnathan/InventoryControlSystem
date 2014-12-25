@@ -36,12 +36,12 @@ object Items {
        items.sortBy(_.id.asc).list
   }
 
-  def get_item(identifier: Int): Item = db.withSession {
+  def get(identifier: Int): Item = db.withSession {
     implicit session =>
       items.filter(_.id === identifier).first
   }
 
-  def update_item(item: Item) = db.withSession {
+  def update(item: Item) = db.withSession {
     implicit session =>
       items.filter(_.id === item.id).update(item)
   }

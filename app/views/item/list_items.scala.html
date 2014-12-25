@@ -21,7 +21,7 @@
                     <td>@item.name</td>
                     <td>@item.category</td>
                     <td>@item.description</td>
-                    <td> @item.id.map { id => <a href="@routes.ItemController.get_item(id)">Details</a> }
+                    <td> @item.id.map { id => <a href="@routes.ItemController.get(id)">Details</a> }
                     </td>
 
                 </tr>

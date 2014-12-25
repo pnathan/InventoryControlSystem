@@ -23,23 +23,23 @@ object ItemController extends Controller {
   }
 
   def all = Action {
-    Ok(views.html.list_items(Items.all))
+    Ok(views.html.item.list_items(Items.all))
   }
 
-  def get_item(item_id : Int) = Action {
-    Ok(views.html.show(Items.all, Items.get_item(item_id)))
+  def get(item_id : Int) = Action {
+    Ok(views.html.item.show(Items.all, Items.get(item_id)))
   }
 
-  def update_item(item_id : Int) = Action {
+  def update(item_id : Int) = Action {
     implicit request =>
       val user = itemForm.bindFromRequest.get
       val item = user.copy(id = Some(item_id))
-      Items.update_item(item)
+      Items.update(item)
       Redirect(routes.Application.index)
   }
 
-  def new_item_form = Action {
-      Ok(views.html.new_item_form(Items.all, itemForm))
+  def new_form = Action {
+      Ok(views.html.item.new_item_form(Items.all, itemForm))
   }
 
   def save = Action {
