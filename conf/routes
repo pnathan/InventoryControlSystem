@@ -9,7 +9,7 @@ GET    /statusz                     controllers.StatusController.statusz
 GET    /healthz                     controllers.StatusController.healthz
 GET    /propertiesz                 controllers.StatusController.propertiesz
 
-GET    /resources/item/             controllers.ItemController.all
+GET    /resources/item              controllers.ItemController.all
 GET    /resources/item/new          controllers.ItemController.new_item_form
 POST   /resources/item/new          controllers.ItemController.save
 POST   /resources/item/query        controllers.ItemController.query
