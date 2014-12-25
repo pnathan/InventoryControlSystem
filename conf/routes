@@ -5,14 +5,16 @@
 # Home page
 GET     /                           controllers.Application.index
 
-GET    /statusz                     controllers.Status.statusz
-GET    /healthz                     controllers.Status.healthz
-GET    /propertiesz                 controllers.Status.propertiesz
+GET    /statusz                     controllers.StatusController.statusz
+GET    /healthz                     controllers.StatusController.healthz
+GET    /propertiesz                 controllers.StatusController.propertiesz
 
-GET    /resources/item/             controllers.Item.all
-GET    /resources/item/:id          controllers.Item.get_item(id: Int)
-POST   /resources/item/:id/update   controllers.Item.update_item(id: Int)
-POST   /resources/item/query        controllers.Item.query
+GET    /resources/item/             controllers.ItemController.all
+GET    /resources/item/:id          controllers.ItemController.get_item(id: Int)
+POST   /resources/item/:id/update   controllers.ItemController.update_item(id: Int)
+POST   /resources/item/query        controllers.ItemController.query
+GET    /resources/item/new          controllers.ItemController.add
+POST   /resources/item/new          controllers.ItemController.add
 
 
 # Map static resources from the /public folder to the /assets URL path
