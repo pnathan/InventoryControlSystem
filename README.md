@@ -1,6 +1,8 @@
 inventory control system
 ===
 
+[![Build Status for pnathan's fork](https://travis-ci.org/pnathan/InventoryControlSystem.svg?branch=master)](https://travis-ci.org/pnathan/InventoryControlSystem)
+
 Setup for development:
 ---
 
