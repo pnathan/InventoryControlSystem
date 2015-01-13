@@ -11,7 +11,7 @@ case class Item(
     id: Option[Int] = None, // Items which haven't been persisted yet don't have an ID!
     name: String,
     description: String,
-    category: String,
+    category: Category,
     date_acquired: org.joda.time.DateTime,
     sponsoring_member: String)
 
@@ -49,5 +49,28 @@ object Items {
     implicit session =>
       items += item;
 
+  }
+}
+
+// holds a fk over to the other.
+case class Category(
+  id: Option[Int] = None,
+  name: String
+)
+
+class Categories (tag: Tag) extends
+  Table[Category](tag, "Categories") {
+  def id = column[Int]("id", O.PrimaryKey,  O.AutoInc)
+  def name = column[String]("name",  O.NotNull)
+  def * = (id.?, name) <> (Category.tupled, Category.unapply)
+}
+
+object Categories {
+  val db = play.api.db.slick.DB
+  val categories = TableQuery[Categories]
+
+  def all: List[Category] = db.withSession {
+    implicit session =>
+    categories.sortBy(_.name.asc).list
   }
 }
