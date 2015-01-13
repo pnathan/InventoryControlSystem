@@ -1,6 +1,6 @@
 language: scala
 before_script:
   - psql -c 'create database inventory_control_system;' -U postgres
-  - psql -c "CREATE ROLE inventory_control_system LOGINENCRYPTED PASSWORD 'md50949af8170fe1d85051f399a0a19071d' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION VALID UNTIL '2015-01-12 00:00:00'"
+  - psql -c "CREATE ROLE inventory_control_system LOGIN ENCRYPTED PASSWORD 'md50949af8170fe1d85051f399a0a19071d' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION VALID UNTIL '2015-01-12 00:00:00'" -U postgres
 scala:
    - 2.11.2

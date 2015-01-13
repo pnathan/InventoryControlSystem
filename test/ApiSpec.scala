@@ -14,12 +14,27 @@ class APISpec extends Specification {
       route(FakeRequest(GET, "/boum")) must beNone
     }
 
-    "render the index page" in new WithApplication{
-      val home = route(FakeRequest(GET, "/")).get
+    "healthz" in new WithApplication{
+      val req = route(FakeRequest(GET, "/healthz")).get
 
-      status(home) must equalTo(OK)
-      contentType(home) must beSome.which(_ == "text/html")
-      contentAsString(home) must contain ("Hello")
+      status(req) must equalTo(OK)
+      contentType(req) must beSome.which(_ == "text/html")
+      contentAsString(req) must contain ("OK")
+    }
+
+    "statusz" in new WithApplication{
+      val req = route(FakeRequest(GET, "/statusz")).get
+
+      status(req) must equalTo(OK)
+      contentType(req) must beSome.which(_ == "text/html")
+      contentAsString(req) must contain ("Up")
+    }
+    "propertiesz" in new WithApplication {
+      val req = route(FakeRequest(GET, "/propertiesz")).get
+
+      status(req) must equalTo(OK)
+      contentType(req) must beSome.which(_ == "text/html")
+      contentAsString(req) must contain ("build version data unknown")
     }
   }
 }
