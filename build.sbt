@@ -1,5 +1,7 @@
 name := """inventory-control-system"""
 
+// the version needs to be shaken out.
+// git rev-parse HEAD > conf/build-data
 version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
